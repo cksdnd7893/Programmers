@@ -1,0 +1,25 @@
+class Solution {
+    public String solution(int a, int b) {
+        String answer = "";
+        String day[] = {"THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"};
+        //일수를 7일로 나눴을때 1일때 FRI이므로 순서 변경
+        int day_count = 0;
+        
+        //1월일때는 일자가 그대로 day_count에 반영
+        for(int i = 2; i <= a; i++) {
+            if ((i == 2) || (i == 4) || (i == 6) || (i == 8) || (i == 9) || (i == 11))
+                day_count += 31;
+            else if (i == 3)
+                day_count += 29;
+            else
+                day_count += 30;
+        }
+       
+        day_count += b;
+        
+        answer = day[day_count % 7];
+        
+        
+        return answer;
+    }
+}
