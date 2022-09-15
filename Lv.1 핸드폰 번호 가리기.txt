@@ -1,0 +1,14 @@
+class Solution {
+    public String solution(String phone_number) {
+        String answer = "";
+        StringBuffer sb = new StringBuffer(phone_number);
+        int last_digit = phone_number.length() - 1;
+        
+        for(int i = last_digit - 4; i >= 0; i--) {
+            sb.setCharAt(i, '*');
+        }
+        answer = sb.toString();
+        
+        return answer;
+    }
+}
