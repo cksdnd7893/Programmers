@@ -24,8 +24,11 @@ class Solution {
         String string_int = "";
         for(int i = 0; i < reverse.length(); i++) {
             char i_char = reverse.charAt(i);
-            
-            if((i_char == '0') || (i == (reverse.length() - 1))){
+              
+            if((i_char == '0') || (i == (reverse.length() - 1))) {
+                if(i == (reverse.length() - 1))
+                    string_int += i_char;
+                
                 if(string_int.equals(""))
                     continue;
                 else {
@@ -36,7 +39,7 @@ class Solution {
                     else if(string_int.equals("2"))
                         answer++;
                     else {
-                        int tmp2 = Integer.parseInt(string_int);
+                        long tmp2 = Long.parseLong(string_int);
                         for(int j = 2; j < tmp2 - 1; j++) {
                             if((tmp2 % j) == 0)
                                 count++;
@@ -70,3 +73,4 @@ class Solution {
                 answer++;
         }
         */ 
+// 1, 11번 런타임 오류, 12번 안됨
