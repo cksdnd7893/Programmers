@@ -19,18 +19,18 @@ class Solution {
         for(int i = to_k.length() - 1; i >= 0; i--)
             reverse += to_k.charAt(i);
         
-        string string_int = "";
+        String string_int = "";
         for(int i = 0; i < reverse.length() - 1; i++) {
-            String n = reverse.charAt(i);
+            char i_char = reverse.charAt(i);
             
-            if(n != "0")
-                string_int += n;
+            if(i_char != '0')
+                string_int += i_char;
             else {
                 if(string_int == "0" || string_int == "")
                     continue;
                 else {
                     int tmp2 = Integer.parseInt(string_int);
-                    for(int j = 2; j < n / 2; j++) {
+                    for(int j = 2; j < tmp2 / 2; j++) {
                         if((tmp2 % j) == 0)
                             count++;
                     }
@@ -57,4 +57,3 @@ class Solution {
         return answer;
     }
 }
-// 미완성
