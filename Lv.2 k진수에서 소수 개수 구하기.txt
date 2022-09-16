@@ -7,6 +7,7 @@ class Solution {
         int leave = 0;
         int tmp = n;
         String to_k = "";
+        String string_tmp = "";
         
         //진수 변환
         for(int i = 0; tmp != 0; i++) {
@@ -19,13 +20,13 @@ class Solution {
         for(int i = to_k.length() - 1; i >= 0; i--)
             reverse += to_k.charAt(i);
          
-        
+        //0을 만날때마다 소수인지 판별하기
         String string_int = "";
         for(int i = 0; i < reverse.length(); i++) {
             char i_char = reverse.charAt(i);
             
-            if((i_char == '0') || (i == reverse.length() - 1)){
-                if(string_int == "")
+            if((i_char == '0') || (i == (reverse.length() - 1))){
+                if(string_int.equals(""))
                     continue;
                 else {
                     if(string_int.equals("1")) {
@@ -44,6 +45,7 @@ class Solution {
                             answer++;
                     }
                     count = 0;
+                    string_tmp = string_int;
                     string_int = "";
                 }
             }
