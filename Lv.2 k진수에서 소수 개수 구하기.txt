@@ -18,29 +18,44 @@ class Solution {
         String reverse = "";
         for(int i = to_k.length() - 1; i >= 0; i--)
             reverse += to_k.charAt(i);
+         
         
         String string_int = "";
-        for(int i = 0; i < reverse.length() - 1; i++) {
+        for(int i = 0; i < reverse.length(); i++) {
             char i_char = reverse.charAt(i);
             
-            if(i_char != '0')
-                string_int += i_char;
-            else {
-                if(string_int == "0" || string_int == "")
+            if((i_char == '0') || (i == reverse.length() - 1)){
+                if(string_int == "")
                     continue;
                 else {
-                    int tmp2 = Integer.parseInt(string_int);
-                    for(int j = 2; j < tmp2 / 2; j++) {
-                        if((tmp2 % j) == 0)
-                            count++;
-                    }
-                    if(count > 0)
+                    if(string_int.equals("1")) {
+                        string_int = "";
+                        continue;
+                    }    
+                    else if(string_int.equals("2"))
                         answer++;
+                    else {
+                        int tmp2 = Integer.parseInt(string_int);
+                        for(int j = 2; j < tmp2 - 1; j++) {
+                            if((tmp2 % j) == 0)
+                                count++;
+                        }
+                        if(count == 0)
+                            answer++;
+                    }
+                    count = 0;
+                    string_int = "";
                 }
             }
+            else if(i_char != '0')
+                string_int += i_char;
         }
+        return answer;
+    }
+}
+       // return answer;
         
-        /*
+       /*
         StringTokenizer st = new StringTokenizer(reverse, "0");
         
         while(st.hasMoreTokens()) {
@@ -52,8 +67,4 @@ class Solution {
             if(count > 0)
                 answer++;
         }
-        */
-            
-        return answer;
-    }
-}
+        */ 
