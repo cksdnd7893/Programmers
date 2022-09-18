@@ -1,0 +1,18 @@
+class Solution {
+    public int[] solution(int brown, int yellow) {
+        int[] answer = new int[2];
+        int allBlock = brown + yellow;
+        
+        // 세로가 적어도 세줄, 가로가 적어도 세줄 들어가야 노란색이 존재할 수 있음
+        for(int i = allBlock - 3; i > 2; i--){
+            //조건문 : 가로세로를 곱해서 전체 블럭의 개수의 합이 나오는지 && 가로-2 * 세로-2 했을 때 yellow 블럭의 개수가 나오는지.
+            if((allBlock % i) == 0 && (i-2)*(allBlock/i-2) == yellow) {
+                answer[0] = i;
+                answer[1] = allBlock / i;
+                
+                break;
+            }      
+        }
+        return answer;
+    }
+}
